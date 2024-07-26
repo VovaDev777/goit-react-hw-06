@@ -1,4 +1,4 @@
-import React from 'react'
+import '../src/reset.css'
 
 const App = () => {
   return (
