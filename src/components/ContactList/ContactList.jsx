@@ -1,15 +1,24 @@
-import { useSelector } from 'react-redux'
 import Contact from '../Contact/Contact'
 import css from './ContactList.module.css'
+import { deleteUserData } from '../../redux/store';
+import { useDispatch } from 'react-redux';
 
-const ContactList = ({userinfo, onDeleteContact}) => {
+const ContactList = ({contacts}) => {
 
-  const userName = useSelector((state) => state.userData.name);
+  
+  const dispatch = useDispatch();
+
+  const onDeleteContact = (index) => {
+    dispatch(deleteUserData(index));
+  }
 
   return (
     <div className={css.container}>
-        {userinfo.map(({username, number}, index) => (
-        <Contact key = {index} username = {username} number = {number} onDelete={() => onDeleteContact(index)}/>
+      {contacts.map(({ username, number }, index) => (
+        <Contact key={index}
+          username={username}
+          number={number}
+          onDelete={() => onDeleteContact(index)} />
       ))}
     </div>
   )

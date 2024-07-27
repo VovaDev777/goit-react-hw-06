@@ -1,32 +1,24 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-    userData: {
-        name: "",
-        userNumber: 0
+const userDataSlice = createSlice({
+    name: 'userData',
+    initialState: [],
+    reducers: {
+        addUserData: (state, action) => {
+            state.push(action.payload);
+        },
+        deleteUserData: (state, action) => {
+            return state.filter((_, index) => index !== action.payload);
+        }
     }
-};
+});
 
-const rootReducer = (state = initialState, action) => {
-    
-    switch (action.type) {
-
-        case "userData/add":
-            return {
-                userData: {
-                    name: state.userData.name + action.payload,
-                    userNumber: state.userData.userNumber + action.payload
-                },
-            };
-
-        default:
-            return state;
-    }
-
-};
-
-
+export const { addUserData, deleteUserData } = userDataSlice.actions;
 
 export const store = configureStore({
-    reducer: rootReducer,
+    reducer: {
+        userData: userDataSlice.reducer
+    }
 });
+
+export default store;
