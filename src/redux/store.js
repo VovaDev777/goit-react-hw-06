@@ -1,10 +1,29 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-const initialState = 0;
+const initialState = {
+    userData: {
+        name: "",
+        userNumber: 0
+    }
+};
 
 const rootReducer = (state = initialState, action) => {
-    return state;
-} 
+    
+    switch (action.type) {
+
+        case "userData/add":
+            return {
+                userData: {
+                    name: state.userData.name + action.payload,
+                    userNumber: state.userData.userNumber + action.payload
+                },
+            };
+
+        default:
+            return state;
+    }
+
+};
 
 
 
