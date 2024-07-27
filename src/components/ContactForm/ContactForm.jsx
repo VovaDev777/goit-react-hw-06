@@ -19,9 +19,8 @@ const UserSchema = Yup.object().shape({
 const ContactFrom = ({ onAddContact }) => {
 
 
-    const handleSubmit = (values, {resetForm}) => {
-        onAddContact(values);
-        resetForm();
+    const handleSubmit = () => {
+        
     }
 
   return (

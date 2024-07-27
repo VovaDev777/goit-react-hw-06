@@ -6,39 +6,39 @@ import css from './App.module.css'
 import '../../reset.css'
 
 const App = () => {
-  const [contacts, setContact] = useState(() => {
-    const storedContacts = JSON.parse(localStorage.getItem("contacts"));
-    return storedContacts ? storedContacts : [];
-  });
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [contacts, setContact] = useState(() => {
+  //   const storedContacts = JSON.parse(localStorage.getItem("contacts"));
+  //   return storedContacts ? storedContacts : [];
+  // });
+  // const [searchQuery, setSearchQuery] = useState("");
 
 
-  useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts))
-  }, [contacts])
+  // useEffect(() => {
+  //   localStorage.setItem("contacts", JSON.stringify(contacts))
+  // }, [contacts])
 
-  const handleAddContact = (contact) => {
-    setContact([...contacts, contact])
-  };
+  // const handleAddContact = (contact) => {
+  //   setContact([...contacts, contact])
+  // };
 
-  const handleDeleteContact = (index) => {
-    setContact(contacts.filter((_, i) => i !== index));
-  };
+  // const handleDeleteContact = (index) => {
+  //   setContact(contacts.filter((_, i) => i !== index));
+  // };
 
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+  // const handleSearchChange = (event) => {
+  //   setSearchQuery(event.target.value);
+  // };
 
-  const filteredContacts = contacts.filter(contact =>
-    contact.username.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // const filteredContacts = contacts.filter(contact =>
+  //   contact.username.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
 
   return (
     <div className={css.container}>
       <h1 className={css.text}>Phonebook</h1>
-      <ContactForm onAddContact={handleAddContact} />
-      <SearchBox searchQuery={searchQuery} onSearchChange={handleSearchChange} />
-      <ContactList userinfo={filteredContacts} onDeleteContact={handleDeleteContact} />
+      <ContactForm />
+      <SearchBox />
+      <ContactList />
 
     </div>
   )
