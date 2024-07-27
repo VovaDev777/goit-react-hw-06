@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import SearchBox from '../SearchBox/SearchBox'
 import ContactList from "../ContactList/ContactList";
 import css from './App.module.css'
+import '../../reset.css'
 
 const App = () => {
   const [contacts, setContact] = useState(() => {
@@ -12,11 +13,9 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
 
-  
-
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contacts))
-   }, [contacts])
+  }, [contacts])
 
   const handleAddContact = (contact) => {
     setContact([...contacts, contact])
@@ -37,10 +36,10 @@ const App = () => {
   return (
     <div className={css.container}>
       <h1 className={css.text}>Phonebook</h1>
-      <ContactForm onAddContact = {handleAddContact}/>
-      <SearchBox searchQuery={searchQuery} onSearchChange={handleSearchChange}/>
-      <ContactList userinfo = {filteredContacts} onDeleteContact = {handleDeleteContact}/>
-      
+      <ContactForm onAddContact={handleAddContact} />
+      <SearchBox searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+      <ContactList userinfo={filteredContacts} onDeleteContact={handleDeleteContact} />
+
     </div>
   )
 }
