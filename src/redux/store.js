@@ -5,23 +5,23 @@ import contactsReducer from './contactsSlice';
 import filtersReducer from './filtersSlice';
 
 const rootReducer = combineReducers({
-  contacts: contactsReducer,
-  filters: filtersReducer
+    contacts: contactsReducer,
+    filters: filtersReducer
 });
 
 const persistConfig = {
-  key: 'contacts',
-  storage,
-  whitelist: ['items']
+    key: 'contacts',
+    storage,
+    whitelist: ['items']
 };
 
 const persistedReducer = persistReducer(persistConfig, contactsReducer);
 
 const store = configureStore({
-  reducer: {
-    contacts: persistedReducer,
-    filters: filtersReducer
-  }
+    reducer: {
+        contacts: persistedReducer,
+        filters: filtersReducer
+    }
 });
 
 const persistor = persistStore(store);
