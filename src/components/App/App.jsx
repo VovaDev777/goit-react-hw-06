@@ -7,10 +7,6 @@ import '../../reset.css'
 
 const App = () => {
  
-
-
-
-
   return (
     <div className={css.container}>
       <h1 className={css.text}>Phonebook</h1>
