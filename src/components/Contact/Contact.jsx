@@ -1,8 +1,15 @@
 import css from './Contact.module.css'
 import { AiOutlineUser, AiFillPhone } from "react-icons/ai";
 import 'normalize.css';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contactsSlice';
 
-const Contact = ({ contact, onDelete }) => {
+const Contact = ({ contact }) => {
+
+const dispatch = useDispatch();
+const handleDelete = (id) => {
+  dispatch(deleteContact(id));
+};
 
   return (
     <div className={css.container}>
@@ -16,7 +23,7 @@ const Contact = ({ contact, onDelete }) => {
           <p className={css.text}>{contact.number}</p>
         </li>
       </ul>
-      <button type='submit' onClick={onDelete} className={css.btn}>Delete</button>
+      <button type='submit' onClick={() => handleDelete(contact.id)} className={css.btn}>Delete</button>
     </div>
   )
 }
